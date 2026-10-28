@@ -1,0 +1,1318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnHub | Online Learning Platform</title>
+
+<style>
+:root {
+  --primary: #6558e8;
+  --primary-dark: #4b3fca;
+  --bg: #f6f7fc;
+  --white: #ffffff;
+  --text: #20243a;
+  --muted: #777f96;
+  --border: #e7e8f1;
+  --green: #1a9b70;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(1150px, 92%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffffed;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.logo span {
+  color: #ff9c59;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: color .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  padding: 11px 18px;
+  font-weight: bold;
+  transition: .25s;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px #6558e82b;
+}
+
+.btn-light {
+  background: #efedff;
+  color: var(--primary);
+}
+
+.btn-light:hover {
+  background: #e1ddff;
+  color: var(--primary-dark);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 85% 30%, #c8c0ff80, transparent 30%),
+    linear-gradient(120deg, #eeedff, #f8f9ff);
+  padding: 75px 0;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: #e1ddff;
+  color: var(--primary-dark);
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.15;
+  margin: 22px 0;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+  margin-top: 27px;
+}
+
+.hero-visual {
+  min-height: 300px;
+  background: linear-gradient(135deg, #7569f4, #a39aff);
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  box-shadow: 0 20px 50px #6558e82b;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-visual .book {
+  font-size: 130px;
+}
+
+.floating-note {
+  position: absolute;
+  background: white;
+  padding: 13px 17px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px #25205218;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.note-one {
+  top: 24px;
+  left: -18px;
+}
+
+.note-two {
+  bottom: 25px;
+  right: -18px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.stat {
+  padding: 22px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 27px;
+  color: var(--primary);
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+section.content {
+  padding: 65px 0;
+  scroll-margin-top: 75px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.section-head h2 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.section-head h2 span {
+  color: var(--primary);
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.category {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 19px 12px;
+  text-align: center;
+  border-radius: 12px;
+  transition: .25s;
+}
+
+.category:hover,
+.category.selected {
+  border-color: var(--primary);
+  background: #efedff;
+  transform: translateY(-3px);
+}
+
+.category .icon {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.category small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: white;
+  outline-color: var(--primary);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.course-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px #29264c12;
+}
+
+.thumbnail {
+  height: 190px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.thumbnail .art {
+  font-size: 74px;
+  filter: drop-shadow(0 8px 12px #0002);
+  transition: transform .3s;
+}
+
+.course-card:hover .art {
+  transform: scale(1.12);
+}
+
+.thumb-python {
+  background: linear-gradient(135deg, #c5e6ff, #a9b8f9);
+}
+
+.thumb-web {
+  background: linear-gradient(135deg, #ffd6b6, #ffaaa9);
+}
+
+.thumb-ai {
+  background: linear-gradient(135deg, #c9f2e4, #83cdbb);
+}
+
+.thumb-ui {
+  background: linear-gradient(135deg, #f8d5fa, #c8b4ff);
+}
+
+.thumb-cyber {
+  background: linear-gradient(135deg, #b8caff, #a7b5ed);
+}
+
+.thumb-data {
+  background: linear-gradient(135deg, #ffe6a9, #ffc9a1);
+}
+
+.play {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffffed;
+  color: var(--primary);
+  box-shadow: 0 4px 15px #0001;
+}
+
+.level {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: white;
+  border-radius: 5px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.course-body {
+  padding: 19px;
+}
+
+.course-category {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.course-body h3 {
+  font-size: 18px;
+  margin: 7px 0;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 42px;
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #efedff;
+  font-size: 20px;
+}
+
+.instructor strong {
+  display: block;
+  font-size: 13px;
+}
+
+.instructor small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.course-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 17px;
+}
+
+.course-body .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  background: white;
+  color: var(--muted);
+  padding: 35px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.learning-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 25px;
+}
+
+.panel h3 {
+  margin-bottom: 15px;
+}
+
+.objectives {
+  list-style: none;
+  display: grid;
+  gap: 13px;
+}
+
+.objectives li {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  color: #596177;
+  font-size: 14px;
+}
+
+.check {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.progress-item {
+  margin: 20px 0;
+}
+
+.progress-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 9px;
+}
+
+.progress-title span:last-child {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.track {
+  width: 100%;
+  height: 9px;
+  background: #ececf5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6558e8, #a39aff);
+  border-radius: 20px;
+  transition: width .5s;
+}
+
+.lesson-button {
+  margin-top: 15px;
+}
+
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.teacher {
+  text-align: center;
+  padding: 28px 20px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: .25s;
+}
+
+.teacher:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.teacher-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  border-radius: 50%;
+  background: #efedff;
+}
+
+.teacher p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.teacher .tagline {
+  color: var(--primary);
+  margin-top: 10px;
+}
+
+footer {
+  background: #20213a;
+  color: #d9daeb;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+footer strong {
+  color: white;
+}
+
+footer p {
+  margin-top: 5px;
+}
+
+@media (max-width: 850px) {
+  .nav-links {
+    gap: 12px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr .65fr;
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  nav {
+    padding: 13px 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .hero {
+    padding: 50px 0;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .course-grid,
+  .learning-grid,
+  .instructor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  section.content {
+    padding: 45px 0;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">Learn<span>Hub.</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#learning">My Learning</a></li>
+      <li><a href="#instructors">Instructors</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#courses" class="btn">Explore Courses</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div>
+      <span class="eyebrow">LEARN SOMETHING NEW TODAY</span>
+      <h1>Build skills.<br>Shape your <span>future.</span></h1>
+      <p>
+        Learn programming, artificial intelligence, web development
+        and more with beginner-friendly courses and structured lessons.
+      </p>
+      <div class="hero-buttons">
+        <a href="#courses" class="btn">Explore Courses →</a>
+        <a href="#learning" class="btn btn-light">My Learning</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="courseCount">06</strong>
+          <span>Courses</span>
+        </div>
+        <div class="stat">
+          <strong>03</strong>
+          <span>Instructors</span>
+        </div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Learn at Your Pace</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Learning illustration">
+      <span class="book">📚</span>
+      <div class="floating-note note-one">🎯 Learn by Doing</div>
+      <div class="floating-note note-two">✨ New Skills, New You</div>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="categories">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Browse <span>Categories</span></h2>
+        <p>Choose a topic and start learning.</p>
+      </div>
+    </div>
+
+    <div class="categories">
+      <button class="category selected" data-category="All">
+        <span class="icon">🌐</span>
+        <strong>All Courses</strong>
+        <small>Explore everything</small>
+      </button>
+
+      <button class="category" data-category="Programming">
+        <span class="icon">💻</span>
+        <strong>Programming</strong>
+        <small>Code and build</small>
+      </button>
+
+      <button class="category" data-category="Web Development">
+        <span class="icon">🖥️</span>
+        <strong>Web Development</strong>
+        <small>Create websites</small>
+      </button>
+
+      <button class="category" data-category="AI & ML">
+        <span class="icon">🤖</span>
+        <strong>AI & ML</strong>
+        <small>Explore intelligence</small>
+      </button>
+
+      <button class="category" data-category="Cybersecurity">
+        <span class="icon">🔐</span>
+        <strong>Cybersecurity</strong>
+        <small>Learn online safety</small>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="courses">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Popular <span>Courses</span></h2>
+        <p>Explore courses and enroll in the topics you like.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <input id="searchInput" type="search"
+        placeholder="🔍 Search courses or instructors..."
+        aria-label="Search courses or instructors">
+
+      <select id="levelFilter" aria-label="Filter by course level">
+        <option value="All">All Levels</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+      </select>
+    </div>
+
+    <div class="course-grid" id="courseGrid"></div>
+  </div>
+</section>
+
+<section class="content" id="learning">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>My <span>Learning</span></h2>
+        <p>Track progress in your enrolled courses.</p>
+      </div>
+    </div>
+
+    <div class="learning-grid">
+      <div class="panel">
+        <h3>🎯 Learning Objectives</h3>
+        <ul class="objectives">
+          <li><span class="check">✓</span>
+            Understand programming fundamentals and logical thinking.</li>
+          <li><span class="check">✓</span>
+            Build responsive websites using HTML, CSS and JavaScript.</li>
+          <li><span class="check">✓</span>
+            Understand basic artificial intelligence concepts.</li>
+          <li><span class="check">✓</span>
+            Learn cybersecurity fundamentals and safe online practices.</li>
+          <li><span class="check">✓</span>
+            Build practical projects to demonstrate your skills.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>📈 Course Progress</h3>
+        <p style="color:var(--muted);font-size:13px">
+          Demo progress indicators. Enrolled course progress starts at 0%.
+        </p>
+        <div id="progressList"></div>
+        <button class="btn btn-light lesson-button" id="lessonBtn">
+          Complete Next Lesson
+        </button>
+        <p id="progressMessage" aria-live="polite"
+          style="font-size:13px;color:var(--green);margin-top:10px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="instructors">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Meet Our <span>Instructors</span></h2>
+        <p>Learn from experienced educators in our demo platform.</p>
+      </div>
+    </div>
+
+    <div class="instructor-grid">
+      <article class="teacher">
+        <div class="teacher-avatar">👨‍💻</div>
+        <h3>Arjun Sharma</h3>
+        <p>Python & Programming</p>
+        <p class="tagline">Learn coding step by step</p>
+      </article>
+
+      <article class="teacher">
+        <div class="teacher-avatar">👩‍💻</div>
+        <h3>Priya Reddy</h3>
+        <p>Web Development & UI Design</p>
+        <p class="tagline">Turn ideas into websites</p>
+      </article>
+
+      <article class="teacher">
+        <div class="teacher-avatar">🧑‍🔬</div>
+        <h3>Rahul Verma</h3>
+        <p>AI, ML & Cybersecurity</p>
+        <p class="tagline">Explore emerging technologies</p>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>LearnHub. — Learn Without Limits</strong>
+    <p>Learn today. Build tomorrow.</p>
+    <p>Student Web Development Project · © <span id="year"></span></p>
+  </div>
+</footer>
+
+<script>
+const courses = [
+  {
+    id: 1,
+    title: "Python Programming for Beginners",
+    category: "Programming",
+    instructor: "Arjun Sharma",
+    avatar: "👨‍💻",
+    level: "Beginner",
+    lessons: 24,
+    duration: "6 hours",
+    art: "🐍",
+    theme: "thumb-python",
+    description: "Learn variables, loops, functions and build simple Python programs.",
+    objectives: [
+      "Understand Python syntax and variables",
+      "Write conditional statements and loops",
+      "Create small programs using functions"
+    ]
+  },
+  {
+    id: 2,
+    title: "Full Stack Web Development",
+    category: "Web Development",
+    instructor: "Priya Reddy",
+    avatar: "👩‍💻",
+    level: "Beginner",
+    lessons: 32,
+    duration: "10 hours",
+    art: "🌐",
+    theme: "thumb-web",
+    description: "Create attractive and responsive websites using web technologies.",
+    objectives: [
+      "Structure pages using HTML",
+      "Style layouts with CSS",
+      "Add interactions with JavaScript"
+    ]
+  },
+  {
+    id: 3,
+    title: "Introduction to Artificial Intelligence",
+    category: "AI & ML",
+    instructor: "Rahul Verma",
+    avatar: "🤖",
+    level: "Beginner",
+    lessons: 18,
+    duration: "5 hours",
+    art: "🧠",
+    theme: "thumb-ai",
+    description: "Explore AI concepts, machine learning and real-world applications.",
+    objectives: [
+      "Understand AI and machine learning",
+      "Explore datasets and model concepts",
+      "Identify real-world AI applications"
+    ]
+  },
+  {
+    id: 4,
+    title: "UI/UX Design Fundamentals",
+    category: "Design",
+    instructor: "Priya Reddy",
+    avatar: "👩‍💻",
+    level: "Beginner",
+    lessons: 16,
+    duration: "4 hours",
+    art: "🎨",
+    theme: "thumb-ui",
+    description: "Learn visual hierarchy, layouts, color theory and user experience.",
+    objectives: [
+      "Understand basic design principles",
+      "Create simple wireframes",
+      "Improve usability and accessibility"
+    ]
+  },
+  {
+    id: 5,
+    title: "Cybersecurity Essentials",
+    category: "Cybersecurity",
+    instructor: "Rahul Verma",
+    avatar: "🧑‍🔬",
+    level: "Beginner",
+    lessons: 20,
+    duration: "7 hours",
+    art: "🔐",
+    theme: "thumb-cyber",
+    description: "Learn digital safety, passwords, common threats and defenses.",
+    objectives: [
+      "Recognize common online threats",
+      "Apply safer password practices",
+      "Understand basic security principles"
+    ]
+  },
+  {
+    id: 6,
+    title: "Data Science and Analytics",
+    category: "AI & ML",
+    instructor: "Arjun Sharma",
+    avatar: "👨‍💻",
+    level: "Intermediate",
+    lessons: 28,
+    duration: "8 hours",
+    art: "📊",
+    theme: "thumb-data",
+    description: "Discover data analysis, visualizations and useful data insights.",
+    objectives: [
+      "Understand data preparation",
+      "Explore data using Python",
+      "Create meaningful visualizations"
+    ]
+  }
+];
+
+const enrolled = new Set();
+const progress = {};
+let selectedCategory = "All";
+let activeCourseId = null;
+
+const courseGrid = document.getElementById("courseGrid");
+const searchInput = document.getElementById("searchInput");
+const levelFilter = document.getElementById("levelFilter");
+
+function getFilteredCourses() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  return courses.filter(course => {
+    const matchesText =
+      course.title.toLowerCase().includes(query) ||
+      course.instructor.toLowerCase().includes(query) ||
+      course.category.toLowerCase().includes(query);
+
+    const matchesCategory =
+      selectedCategory === "All" ||
+      course.category === selectedCategory;
+
+    const matchesLevel =
+      levelFilter.value === "All" ||
+      course.level === levelFilter.value;
+
+    return matchesText && matchesCategory && matchesLevel;
+  });
+}
+
+function enrollCourse(id) {
+  enrolled.add(id);
+
+  if (progress[id] === undefined) {
+    progress[id] = 0;
+  }
+
+  activeCourseId = id;
+  renderCourses();
+  renderProgress();
+
+  document.getElementById("progressMessage").textContent =
+    "Successfully enrolled! Your course is now in My Learning.";
+
+  document.getElementById("learning").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function renderCourses() {
+  const filtered = getFilteredCourses();
+  courseGrid.replaceChildren();
+
+  document.getElementById("courseCount").textContent =
+    String(courses.length).padStart(2, "0");
+
+  if (filtered.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "No courses found. Try a different search or category.";
+    courseGrid.appendChild(empty);
+    return;
+  }
+
+  filtered.forEach(course => {
+    const card = document.createElement("article");
+    card.className = "course-card";
+
+    const thumbnail = document.createElement("div");
+    thumbnail.className = "thumbnail " + course.theme;
+
+    const art = document.createElement("span");
+    art.className = "art";
+    art.textContent = course.art;
+
+    const level = document.createElement("span");
+    level.className = "level";
+    level.textContent = course.level;
+
+    const play = document.createElement("span");
+    play.className = "play";
+    play.textContent = "▶";
+    play.setAttribute("aria-label", "Course preview decoration");
+
+    thumbnail.append(art, level, play);
+
+    const body = document.createElement("div");
+    body.className = "course-body";
+
+    const category = document.createElement("div");
+    category.className = "course-category";
+    category.textContent = course.category.toUpperCase();
+
+    const title = document.createElement("h3");
+    title.textContent = course.title;
+
+    const desc = document.createElement("p");
+    desc.className = "description";
+    desc.textContent = course.description;
+
+    const instructor = document.createElement("div");
+    instructor.className = "instructor";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = course.avatar;
+
+    const teacherInfo = document.createElement("div");
+    const teacherName = document.createElement("strong");
+    teacherName.textContent = course.instructor;
+
+    const teacherRole = document.createElement("small");
+    teacherRole.textContent = "Course Instructor";
+
+    teacherInfo.append(teacherName, teacherRole);
+    instructor.append(avatar, teacherInfo);
+
+    const meta = document.createElement("div");
+    meta.className = "course-meta";
+
+    const lessons = document.createElement("span");
+    lessons.textContent = "📚 " + course.lessons + " lessons";
+
+    const duration = document.createElement("span");
+    duration.textContent = "⏱ " + course.duration;
+
+    meta.append(lessons, duration);
+
+    const button = document.createElement("button");
+    button.className = "btn";
+    button.textContent = enrolled.has(course.id)
+      ? "Continue Learning"
+      : "Enroll Now";
+
+    button.addEventListener("click", () => {
+      if (!enrolled.has(course.id)) {
+        enrollCourse(course.id);
+      } else {
+        activeCourseId = course.id;
+        renderProgress();
+
+        document.getElementById("progressMessage").textContent =
+          "Continue " + course.title + " below.";
+
+        document.getElementById("learning").scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    });
+
+    body.append(category, title, desc, instructor, meta, button);
+    card.append(thumbnail, body);
+    courseGrid.appendChild(card);
+  });
+}
+
+function renderProgress() {
+  const progressList = document.getElementById("progressList");
+  progressList.replaceChildren();
+
+  const enrolledCourses = courses.filter(course =>
+    enrolled.has(course.id)
+  );
+
+  if (enrolledCourses.length === 0) {
+    const message = document.createElement("p");
+    message.style.color = "var(--muted)";
+    message.style.fontSize = "14px";
+    message.textContent =
+      "You have not enrolled in a course yet. Select Enroll Now to begin.";
+    progressList.appendChild(message);
+    document.getElementById("lessonBtn").disabled = true;
+    document.getElementById("lessonBtn").style.opacity = ".5";
+    return;
+  }
+
+  enrolledCourses.forEach(course => {
+    const value = progress[course.id] || 0;
+    const item = document.createElement("div");
+    item.className = "progress-item";
+
+    const title = document.createElement("div");
+    title.className = "progress-title";
+
+    const name = document.createElement("span");
+    name.textContent = course.title;
+
+    const percent = document.createElement("span");
+    percent.textContent = value + "%";
+
+    title.append(name, percent);
+
+    const track = document.createElement("div");
+    track.className = "track";
+    track.setAttribute("role", "progressbar");
+    track.setAttribute("aria-valuemin", "0");
+    track.setAttribute("aria-valuemax", "100");
+    track.setAttribute("aria-valuenow", String(value));
+    track.setAttribute("aria-label", course.title + " progress");
+
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.style.width = value + "%";
+
+    track.appendChild(bar);
+    item.append(title, track);
+
+    const choose = document.createElement("button");
+    choose.className = "btn btn-light";
+    choose.style.marginTop = "8px";
+    choose.style.padding = "7px 12px";
+    choose.textContent = activeCourseId === course.id
+      ? "Selected Course"
+      : "Select Course";
+
+    choose.addEventListener("click", () => {
+      activeCourseId = course.id;
+      renderProgress();
+      document.getElementById("progressMessage").textContent =
+        course.title + " selected.";
+    });
+
+    item.appendChild(choose);
+    progressList.appendChild(item);
+  });
+
+  const lessonBtn = document.getElementById("lessonBtn");
+  lessonBtn.disabled = false;
+  lessonBtn.style.opacity = "1";
+}
+
+document.getElementById("lessonBtn").addEventListener("click", () => {
+  if (activeCourseId === null ||
+      !enrolled.has(activeCourseId)) {
+    activeCourseId = courses.find(course =>
+      enrolled.has(course.id)
+    )?.id ?? null;
+  }
+
+  if (activeCourseId === null) return;
+
+  const course = courses.find(item => item.id === activeCourseId);
+
+  progress[activeCourseId] = Math.min(
+    100,
+    (progress[activeCourseId] || 0) +
+    Math.ceil(100 / course.lessons)
+  );
+
+  renderProgress();
+
+  document.getElementById("progressMessage").textContent =
+    progress[activeCourseId] >= 100
+      ? "Congratulations! You completed this demo course."
+      : "Lesson completed! Your progress has been updated.";
+});
+
+searchInput.addEventListener("input", renderCourses);
+levelFilter.addEventListener("change", renderCourses);
+
+document.querySelectorAll(".category").forEach(button => {
+  button.addEventListener("click", () => {
+    selectedCategory = button.dataset.category;
+
+    document.querySelectorAll(".category").forEach(item => {
+      item.classList.toggle("selected", item === button);
+    });
+
+    renderCourses();
+
+    document.getElementById("courses").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+const navLinks = document.querySelectorAll(".nav-links a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.forEach(item => item.classList.remove("active"));
+    link.classList.add("active");
+  });
+});
+
+renderCourses();
+renderProgress();
+</script>
+
+</body>
+</html>
